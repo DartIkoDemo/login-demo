@@ -5,13 +5,13 @@ class LoginFormState {
     this.email = "",
     this.password = "",
     this.confirmedPassword = "",
-    this.errorMessage,
+    this.errorMessage = "",
   });
 
   final String email;
   final String password;
   final String confirmedPassword;
-  final String? errorMessage;
+  final String errorMessage;
 
   LoginFormState copyWith({
     String? email,

@@ -34,7 +34,7 @@ void initGetItComponents() {
 
   getIt.registerFactory(() => AuthenticationRepository(
         authService: getIt<IAuthService>(),
-        secureStorage: getIt<ISecureStorage>(),
+        secureStorage: getIt<ISecureStorage<String>>(),
       ));
   getIt.registerSingleton(
     AuthenticationBloc(getIt<AuthenticationRepository>()),

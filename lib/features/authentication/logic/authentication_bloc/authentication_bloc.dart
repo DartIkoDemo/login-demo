@@ -3,9 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:login_demo/core/repositories/authentication_repository.dart';
 
 part 'authentication_bloc.freezed.dart';
-
 part 'authentication_event.dart';
-
 part 'authentication_state.dart';
 
 class AuthenticationBloc
@@ -29,10 +27,17 @@ class AuthenticationBloc
     Emitter<AuthenticationState> emit,
   ) async {
     emit(AuthenticationState.loadingFromState(state));
-    await _authenticationRepository.init();
-    emit(AuthenticationState.ready(
-      isLoggedIn: await _authenticationRepository.getStatus(),
-    ));
+    await _authenticationRepository.init().then(
+          (initOrFail) => initOrFail.fold(
+            (l) => _emitFail(emit),
+            (r) => _authenticationRepository.getStatus().then(
+                  (statusOrFail) => statusOrFail.fold(
+                    (l) => _emitFail(emit),
+                    (r) => emit(AuthenticationState.ready(isLoggedIn: r)),
+                  ),
+                ),
+          ),
+        );
   }
 
   Future<void> _handleLogoutRequested(
@@ -40,8 +45,12 @@ class AuthenticationBloc
     Emitter<AuthenticationState> emit,
   ) async {
     emit(AuthenticationState.loadingFromState(state));
-    await _authenticationRepository.logOut();
-    emit(const AuthenticationState.ready(isLoggedIn: false));
+    await _authenticationRepository
+        .logOut()
+        .then((logoutOrFail) => logoutOrFail.fold(
+              (l) => _emitFail(emit),
+              (r) => emit(const AuthenticationState.ready(isLoggedIn: false)),
+            ));
   }
 
   Future<void> _handleLoginRequested(
@@ -49,11 +58,15 @@ class AuthenticationBloc
     Emitter<AuthenticationState> emit,
   ) async {
     emit(AuthenticationState.loadingFromState(state));
-    await _authenticationRepository.logIn(
-      email: event.email,
-      password: event.password,
-    );
-    emit(const AuthenticationState.ready(isLoggedIn: true));
+    await _authenticationRepository
+        .logIn(
+          email: event.email,
+          password: event.password,
+        )
+        .then((tokenOrFail) => tokenOrFail.fold(
+              (l) => _emitFail(emit),
+              (r) => emit(const AuthenticationState.ready(isLoggedIn: true)),
+            ));
   }
 
   Future<void> _handleSignupRequested(
@@ -61,10 +74,17 @@ class AuthenticationBloc
     Emitter<AuthenticationState> emit,
   ) async {
     emit(AuthenticationState.loadingFromState(state));
-    await _authenticationRepository.signUp(
-      email: event.email,
-      password: event.password,
-    );
-    emit(const AuthenticationState.ready(isLoggedIn: false));
+    await _authenticationRepository
+        .signUp(
+          email: event.email,
+          password: event.password,
+        )
+        .then((signupOrFail) => signupOrFail.fold(
+              (l) => _emitFail(emit),
+              (r) => emit(const AuthenticationState.ready(isLoggedIn: false)),
+            ));
   }
+
+  void _emitFail(Emitter<AuthenticationState> emit) =>
+      emit(const AuthenticationState.fail(isLoggedIn: true));
 }

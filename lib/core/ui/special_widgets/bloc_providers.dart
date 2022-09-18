@@ -19,17 +19,15 @@ class BlocProvider1<TBloc extends BlocBase<Object>> extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return Builder(
-      builder: (BuildContext context) => _createBlocProvider<TBloc>(
-        context: context,
-        child: child,
-        onBlocCreated: onBlocCreated,
-        lazy: lazy,
-        reuseExisting: reuseExisting,
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Builder(
+        builder: (BuildContext context) => _createBlocProvider<TBloc>(
+          context: context,
+          child: child,
+          onBlocCreated: onBlocCreated,
+          lazy: lazy,
+          reuseExisting: reuseExisting,
+        ),
+      );
 }
 
 class BlocProvider2<TBloc1 extends BlocBase<Object>,

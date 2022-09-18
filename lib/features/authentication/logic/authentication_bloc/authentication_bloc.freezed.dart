@@ -24,7 +24,6 @@ mixin _$AuthenticationEvent {
     required TResult Function(String email, String password) signupRequested,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? appStarted,
@@ -33,7 +32,6 @@ mixin _$AuthenticationEvent {
     TResult Function(String email, String password)? signupRequested,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? appStarted,
@@ -43,7 +41,6 @@ mixin _$AuthenticationEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AppStartedEvent value) appStarted,
@@ -52,7 +49,6 @@ mixin _$AuthenticationEvent {
     required TResult Function(_SignupRequestedEvent value) signupRequested,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_AppStartedEvent value)? appStarted,
@@ -61,7 +57,6 @@ mixin _$AuthenticationEvent {
     TResult Function(_SignupRequestedEvent value)? signupRequested,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AppStartedEvent value)? appStarted,
@@ -86,7 +81,6 @@ class _$AuthenticationEventCopyWithImpl<$Res>
   _$AuthenticationEventCopyWithImpl(this._value, this._then);
 
   final AuthenticationEvent _value;
-
   // ignore: unused_field
   final $Res Function(AuthenticationEvent) _then;
 }
@@ -330,7 +324,6 @@ abstract class _$$_LoginRequestedEventCopyWith<$Res> {
   factory _$$_LoginRequestedEventCopyWith(_$_LoginRequestedEvent value,
           $Res Function(_$_LoginRequestedEvent) then) =
       __$$_LoginRequestedEventCopyWithImpl<$Res>;
-
   $Res call({String email, String password});
 }
 
@@ -480,9 +473,7 @@ abstract class _LoginRequestedEvent implements AuthenticationEvent {
       required final String password}) = _$_LoginRequestedEvent;
 
   String get email;
-
   String get password;
-
   @JsonKey(ignore: true)
   _$$_LoginRequestedEventCopyWith<_$_LoginRequestedEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -493,7 +484,6 @@ abstract class _$$_SignupRequestedEventCopyWith<$Res> {
   factory _$$_SignupRequestedEventCopyWith(_$_SignupRequestedEvent value,
           $Res Function(_$_SignupRequestedEvent) then) =
       __$$_SignupRequestedEventCopyWithImpl<$Res>;
-
   $Res call({String email, String password});
 }
 
@@ -643,9 +633,7 @@ abstract class _SignupRequestedEvent implements AuthenticationEvent {
       required final String password}) = _$_SignupRequestedEvent;
 
   String get email;
-
   String get password;
-
   @JsonKey(ignore: true)
   _$$_SignupRequestedEventCopyWith<_$_SignupRequestedEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -654,52 +642,52 @@ abstract class _SignupRequestedEvent implements AuthenticationEvent {
 /// @nodoc
 mixin _$AuthenticationState {
   bool get isLoggedIn => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoggedIn) initial,
     required TResult Function(bool isLoggedIn) ready,
+    required TResult Function(bool isLoggedIn) fail,
     required TResult Function(bool isLoggedIn) loading,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isLoggedIn)? initial,
     TResult Function(bool isLoggedIn)? ready,
+    TResult Function(bool isLoggedIn)? fail,
     TResult Function(bool isLoggedIn)? loading,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoggedIn)? initial,
     TResult Function(bool isLoggedIn)? ready,
+    TResult Function(bool isLoggedIn)? fail,
     TResult Function(bool isLoggedIn)? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialAuthenticationState value) initial,
     required TResult Function(_ReadyAuthenticationState value) ready,
+    required TResult Function(_FailAuthenticationState value) fail,
     required TResult Function(_LoadingAuthenticationState value) loading,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitialAuthenticationState value)? initial,
     TResult Function(_ReadyAuthenticationState value)? ready,
+    TResult Function(_FailAuthenticationState value)? fail,
     TResult Function(_LoadingAuthenticationState value)? loading,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialAuthenticationState value)? initial,
     TResult Function(_ReadyAuthenticationState value)? ready,
+    TResult Function(_FailAuthenticationState value)? fail,
     TResult Function(_LoadingAuthenticationState value)? loading,
     required TResult orElse(),
   }) =>
@@ -715,7 +703,6 @@ abstract class $AuthenticationStateCopyWith<$Res> {
   factory $AuthenticationStateCopyWith(
           AuthenticationState value, $Res Function(AuthenticationState) then) =
       _$AuthenticationStateCopyWithImpl<$Res>;
-
   $Res call({bool isLoggedIn});
 }
 
@@ -725,7 +712,6 @@ class _$AuthenticationStateCopyWithImpl<$Res>
   _$AuthenticationStateCopyWithImpl(this._value, this._then);
 
   final AuthenticationState _value;
-
   // ignore: unused_field
   final $Res Function(AuthenticationState) _then;
 
@@ -749,7 +735,6 @@ abstract class _$$_InitialAuthenticationStateCopyWith<$Res>
           _$_InitialAuthenticationState value,
           $Res Function(_$_InitialAuthenticationState) then) =
       __$$_InitialAuthenticationStateCopyWithImpl<$Res>;
-
   @override
   $Res call({bool isLoggedIn});
 }
@@ -817,6 +802,7 @@ class _$_InitialAuthenticationState implements _InitialAuthenticationState {
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoggedIn) initial,
     required TResult Function(bool isLoggedIn) ready,
+    required TResult Function(bool isLoggedIn) fail,
     required TResult Function(bool isLoggedIn) loading,
   }) {
     return initial(isLoggedIn);
@@ -827,6 +813,7 @@ class _$_InitialAuthenticationState implements _InitialAuthenticationState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isLoggedIn)? initial,
     TResult Function(bool isLoggedIn)? ready,
+    TResult Function(bool isLoggedIn)? fail,
     TResult Function(bool isLoggedIn)? loading,
   }) {
     return initial?.call(isLoggedIn);
@@ -837,6 +824,7 @@ class _$_InitialAuthenticationState implements _InitialAuthenticationState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoggedIn)? initial,
     TResult Function(bool isLoggedIn)? ready,
+    TResult Function(bool isLoggedIn)? fail,
     TResult Function(bool isLoggedIn)? loading,
     required TResult orElse(),
   }) {
@@ -851,6 +839,7 @@ class _$_InitialAuthenticationState implements _InitialAuthenticationState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialAuthenticationState value) initial,
     required TResult Function(_ReadyAuthenticationState value) ready,
+    required TResult Function(_FailAuthenticationState value) fail,
     required TResult Function(_LoadingAuthenticationState value) loading,
   }) {
     return initial(this);
@@ -861,6 +850,7 @@ class _$_InitialAuthenticationState implements _InitialAuthenticationState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitialAuthenticationState value)? initial,
     TResult Function(_ReadyAuthenticationState value)? ready,
+    TResult Function(_FailAuthenticationState value)? fail,
     TResult Function(_LoadingAuthenticationState value)? loading,
   }) {
     return initial?.call(this);
@@ -871,6 +861,7 @@ class _$_InitialAuthenticationState implements _InitialAuthenticationState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialAuthenticationState value)? initial,
     TResult Function(_ReadyAuthenticationState value)? ready,
+    TResult Function(_FailAuthenticationState value)? fail,
     TResult Function(_LoadingAuthenticationState value)? loading,
     required TResult orElse(),
   }) {
@@ -887,7 +878,6 @@ abstract class _InitialAuthenticationState implements AuthenticationState {
 
   @override
   bool get isLoggedIn;
-
   @override
   @JsonKey(ignore: true)
   _$$_InitialAuthenticationStateCopyWith<_$_InitialAuthenticationState>
@@ -901,7 +891,6 @@ abstract class _$$_ReadyAuthenticationStateCopyWith<$Res>
           _$_ReadyAuthenticationState value,
           $Res Function(_$_ReadyAuthenticationState) then) =
       __$$_ReadyAuthenticationStateCopyWithImpl<$Res>;
-
   @override
   $Res call({bool isLoggedIn});
 }
@@ -968,6 +957,7 @@ class _$_ReadyAuthenticationState implements _ReadyAuthenticationState {
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoggedIn) initial,
     required TResult Function(bool isLoggedIn) ready,
+    required TResult Function(bool isLoggedIn) fail,
     required TResult Function(bool isLoggedIn) loading,
   }) {
     return ready(isLoggedIn);
@@ -978,6 +968,7 @@ class _$_ReadyAuthenticationState implements _ReadyAuthenticationState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isLoggedIn)? initial,
     TResult Function(bool isLoggedIn)? ready,
+    TResult Function(bool isLoggedIn)? fail,
     TResult Function(bool isLoggedIn)? loading,
   }) {
     return ready?.call(isLoggedIn);
@@ -988,6 +979,7 @@ class _$_ReadyAuthenticationState implements _ReadyAuthenticationState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoggedIn)? initial,
     TResult Function(bool isLoggedIn)? ready,
+    TResult Function(bool isLoggedIn)? fail,
     TResult Function(bool isLoggedIn)? loading,
     required TResult orElse(),
   }) {
@@ -1002,6 +994,7 @@ class _$_ReadyAuthenticationState implements _ReadyAuthenticationState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialAuthenticationState value) initial,
     required TResult Function(_ReadyAuthenticationState value) ready,
+    required TResult Function(_FailAuthenticationState value) fail,
     required TResult Function(_LoadingAuthenticationState value) loading,
   }) {
     return ready(this);
@@ -1012,6 +1005,7 @@ class _$_ReadyAuthenticationState implements _ReadyAuthenticationState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitialAuthenticationState value)? initial,
     TResult Function(_ReadyAuthenticationState value)? ready,
+    TResult Function(_FailAuthenticationState value)? fail,
     TResult Function(_LoadingAuthenticationState value)? loading,
   }) {
     return ready?.call(this);
@@ -1022,6 +1016,7 @@ class _$_ReadyAuthenticationState implements _ReadyAuthenticationState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialAuthenticationState value)? initial,
     TResult Function(_ReadyAuthenticationState value)? ready,
+    TResult Function(_FailAuthenticationState value)? fail,
     TResult Function(_LoadingAuthenticationState value)? loading,
     required TResult orElse(),
   }) {
@@ -1042,6 +1037,163 @@ abstract class _ReadyAuthenticationState implements AuthenticationState {
   @override
   @JsonKey(ignore: true)
   _$$_ReadyAuthenticationStateCopyWith<_$_ReadyAuthenticationState>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_FailAuthenticationStateCopyWith<$Res>
+    implements $AuthenticationStateCopyWith<$Res> {
+  factory _$$_FailAuthenticationStateCopyWith(_$_FailAuthenticationState value,
+          $Res Function(_$_FailAuthenticationState) then) =
+      __$$_FailAuthenticationStateCopyWithImpl<$Res>;
+
+  @override
+  $Res call({bool isLoggedIn});
+}
+
+/// @nodoc
+class __$$_FailAuthenticationStateCopyWithImpl<$Res>
+    extends _$AuthenticationStateCopyWithImpl<$Res>
+    implements _$$_FailAuthenticationStateCopyWith<$Res> {
+  __$$_FailAuthenticationStateCopyWithImpl(_$_FailAuthenticationState _value,
+      $Res Function(_$_FailAuthenticationState) _then)
+      : super(_value, (v) => _then(v as _$_FailAuthenticationState));
+
+  @override
+  _$_FailAuthenticationState get _value =>
+      super._value as _$_FailAuthenticationState;
+
+  @override
+  $Res call({
+    Object? isLoggedIn = freezed,
+  }) {
+    return _then(_$_FailAuthenticationState(
+      isLoggedIn: isLoggedIn == freezed
+          ? _value.isLoggedIn
+          : isLoggedIn // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_FailAuthenticationState implements _FailAuthenticationState {
+  const _$_FailAuthenticationState({required this.isLoggedIn});
+
+  @override
+  final bool isLoggedIn;
+
+  @override
+  String toString() {
+    return 'AuthenticationState.fail(isLoggedIn: $isLoggedIn)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FailAuthenticationState &&
+            const DeepCollectionEquality()
+                .equals(other.isLoggedIn, isLoggedIn));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(isLoggedIn));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_FailAuthenticationStateCopyWith<_$_FailAuthenticationState>
+      get copyWith =>
+          __$$_FailAuthenticationStateCopyWithImpl<_$_FailAuthenticationState>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(bool isLoggedIn) initial,
+    required TResult Function(bool isLoggedIn) ready,
+    required TResult Function(bool isLoggedIn) fail,
+    required TResult Function(bool isLoggedIn) loading,
+  }) {
+    return fail(isLoggedIn);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(bool isLoggedIn)? initial,
+    TResult Function(bool isLoggedIn)? ready,
+    TResult Function(bool isLoggedIn)? fail,
+    TResult Function(bool isLoggedIn)? loading,
+  }) {
+    return fail?.call(isLoggedIn);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(bool isLoggedIn)? initial,
+    TResult Function(bool isLoggedIn)? ready,
+    TResult Function(bool isLoggedIn)? fail,
+    TResult Function(bool isLoggedIn)? loading,
+    required TResult orElse(),
+  }) {
+    if (fail != null) {
+      return fail(isLoggedIn);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialAuthenticationState value) initial,
+    required TResult Function(_ReadyAuthenticationState value) ready,
+    required TResult Function(_FailAuthenticationState value) fail,
+    required TResult Function(_LoadingAuthenticationState value) loading,
+  }) {
+    return fail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitialAuthenticationState value)? initial,
+    TResult Function(_ReadyAuthenticationState value)? ready,
+    TResult Function(_FailAuthenticationState value)? fail,
+    TResult Function(_LoadingAuthenticationState value)? loading,
+  }) {
+    return fail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialAuthenticationState value)? initial,
+    TResult Function(_ReadyAuthenticationState value)? ready,
+    TResult Function(_FailAuthenticationState value)? fail,
+    TResult Function(_LoadingAuthenticationState value)? loading,
+    required TResult orElse(),
+  }) {
+    if (fail != null) {
+      return fail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FailAuthenticationState implements AuthenticationState {
+  const factory _FailAuthenticationState({required final bool isLoggedIn}) =
+      _$_FailAuthenticationState;
+
+  @override
+  bool get isLoggedIn;
+
+  @override
+  @JsonKey(ignore: true)
+  _$$_FailAuthenticationStateCopyWith<_$_FailAuthenticationState>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1120,6 +1272,7 @@ class _$_LoadingAuthenticationState implements _LoadingAuthenticationState {
   TResult when<TResult extends Object?>({
     required TResult Function(bool isLoggedIn) initial,
     required TResult Function(bool isLoggedIn) ready,
+    required TResult Function(bool isLoggedIn) fail,
     required TResult Function(bool isLoggedIn) loading,
   }) {
     return loading(isLoggedIn);
@@ -1130,6 +1283,7 @@ class _$_LoadingAuthenticationState implements _LoadingAuthenticationState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(bool isLoggedIn)? initial,
     TResult Function(bool isLoggedIn)? ready,
+    TResult Function(bool isLoggedIn)? fail,
     TResult Function(bool isLoggedIn)? loading,
   }) {
     return loading?.call(isLoggedIn);
@@ -1140,6 +1294,7 @@ class _$_LoadingAuthenticationState implements _LoadingAuthenticationState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(bool isLoggedIn)? initial,
     TResult Function(bool isLoggedIn)? ready,
+    TResult Function(bool isLoggedIn)? fail,
     TResult Function(bool isLoggedIn)? loading,
     required TResult orElse(),
   }) {
@@ -1154,6 +1309,7 @@ class _$_LoadingAuthenticationState implements _LoadingAuthenticationState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialAuthenticationState value) initial,
     required TResult Function(_ReadyAuthenticationState value) ready,
+    required TResult Function(_FailAuthenticationState value) fail,
     required TResult Function(_LoadingAuthenticationState value) loading,
   }) {
     return loading(this);
@@ -1164,6 +1320,7 @@ class _$_LoadingAuthenticationState implements _LoadingAuthenticationState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitialAuthenticationState value)? initial,
     TResult Function(_ReadyAuthenticationState value)? ready,
+    TResult Function(_FailAuthenticationState value)? fail,
     TResult Function(_LoadingAuthenticationState value)? loading,
   }) {
     return loading?.call(this);
@@ -1174,6 +1331,7 @@ class _$_LoadingAuthenticationState implements _LoadingAuthenticationState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialAuthenticationState value)? initial,
     TResult Function(_ReadyAuthenticationState value)? ready,
+    TResult Function(_FailAuthenticationState value)? fail,
     TResult Function(_LoadingAuthenticationState value)? loading,
     required TResult orElse(),
   }) {
@@ -1190,7 +1348,6 @@ abstract class _LoadingAuthenticationState implements AuthenticationState {
 
   @override
   bool get isLoggedIn;
-
   @override
   @JsonKey(ignore: true)
   _$$_LoadingAuthenticationStateCopyWith<_$_LoadingAuthenticationState>

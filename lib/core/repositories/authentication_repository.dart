@@ -1,11 +1,12 @@
 import 'dart:async';
 
+import 'package:dartz/dartz.dart';
 import 'package:login_demo/core/services/i_auth_service.dart';
 import 'package:login_demo/core/storages/i_secure_storage.dart';
 
 class AuthenticationRepository {
   AuthenticationRepository({
-    required ISecureStorage secureStorage,
+    required ISecureStorage<String> secureStorage,
     required IAuthService authService,
   })  : _secureStorage = secureStorage,
         _authService = authService;
@@ -13,45 +14,59 @@ class AuthenticationRepository {
   final ISecureStorage _secureStorage;
   final IAuthService _authService;
 
-  Future<void> init() => _secureStorage.init();
-
-  Future<bool> getStatus() => _secureStorage.isNotEmpty();
-
-  Future<void> signUp({required String email, required String password}) async {
-    //try {
-    await _authService.signUp(
-      email: email,
-      password: password,
-    );
-    // } catch (_) {
-    //   throw const SignUpWithEmailAndPasswordFailure();
-    // }
+  Future<Either<String, void>> init() async {
+    try {
+      await _secureStorage.init();
+      return right(null);
+    } catch (e) {
+      return left(e.toString());
+    }
   }
 
-  Future<void> logIn({
+  Future<Either<String, bool>> getStatus() async {
+    try {
+      final isAuthenticated = await _secureStorage.isNotEmpty();
+      return right(isAuthenticated);
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
+
+  Future<Either<String, void>> signUp({
     required String email,
     required String password,
   }) async {
-    //try {
-    final String result = await _authService.logIn(
-      email: email,
-      password: password,
-    );
-    //if (result)
-    await _secureStorage.putItem(email, result);
-    // } catch (_) {
-    //   throw const LogInWithEmailAndPasswordFailure();
-    // }
+    try {
+      await _authService.signUp(email: email, password: password);
+      return right(null);
+    } catch (e) {
+      return left(e.toString());
+    }
   }
 
-  Future<void> logOut() async {
-    // try {
-    //final bool result =
-    await _authService.logOut();
-    //if (result)
-    await _secureStorage.deleteAll();
-    // } catch (_) {
-    //   throw LogOutFailure();
-    // }
+  Future<Either<String, void>> logIn({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final String token = await _authService.logIn(
+        email: email,
+        password: password,
+      );
+      await _secureStorage.putItem(email, token);
+      return right(null);
+    } catch (e) {
+      return left(e.toString());
+    }
+  }
+
+  Future<Either<String, void>> logOut() async {
+    try {
+      await _authService.logOut();
+      await _secureStorage.deleteAll();
+      return right(null);
+    } catch (e) {
+      return left(e.toString());
+    }
   }
 }

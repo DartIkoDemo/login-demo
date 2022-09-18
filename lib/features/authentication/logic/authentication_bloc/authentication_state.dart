@@ -10,6 +10,10 @@ class AuthenticationState with _$AuthenticationState {
     required bool isLoggedIn,
   }) = _ReadyAuthenticationState;
 
+  const factory AuthenticationState.fail({
+    required bool isLoggedIn,
+  }) = _FailAuthenticationState;
+
   const factory AuthenticationState.loading({
     required bool isLoggedIn,
   }) = _LoadingAuthenticationState;

@@ -7,15 +7,18 @@ class CustomBlocObserver extends BlocObserver {
   CustomBlocObserver();
 
   @override
-  void onCreate(BlocBase blocBase) {
-    log('${blocBase.runtimeType} created');
-    super.onCreate(blocBase);
+  void onCreate(BlocBase bloc) {
+    log('created', name: "${bloc.runtimeType}");
+    super.onCreate(bloc);
   }
 
   @override
   void onEvent(Bloc bloc, Object? event) {
-    log('${bloc.runtimeType} received\n'
-        '  event:     ${_toString(event)}');
+    log(
+      'received\n'
+      '  event:     ${_toString(event)}',
+      name: "${bloc.runtimeType}",
+    );
     super.onEvent(bloc, event);
   }
 
@@ -27,27 +30,30 @@ class CustomBlocObserver extends BlocObserver {
     from = _toString(transition.currentState);
     to = _toString(nextState);
 
-    String message = "${bloc.runtimeType}'s state changed\n"
+    String message = "state changed\n"
         '  From:      $from\n'
         '  To:        $to\n';
 
     message += '  By:        ${_toString(transition.event)}';
-    log(message);
+    log(message, name: '${bloc.runtimeType}');
     super.onTransition(bloc, transition);
   }
 
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
-    log('${bloc.runtimeType} failed\n'
-        '  error:  $error\n'
-        '  ${stackTrace.toStringShort(indent: "  ")}');
+    log(
+      'failed\n'
+      '  error:  $error\n'
+      '  ${stackTrace.toStringShort(indent: "  ")}',
+      name: "${bloc.runtimeType}",
+    );
     super.onError(bloc, error, stackTrace);
   }
 
   @override
-  void onClose(BlocBase blocBase) {
-    log('${blocBase.runtimeType} closed');
-    super.onClose(blocBase);
+  void onClose(BlocBase bloc) {
+    log('closed', name: "${bloc.runtimeType}");
+    super.onClose(bloc);
   }
 
   String? _toString<T>(T object) {

@@ -9,6 +9,7 @@ import 'core/ui/special_widgets/bloc_providers.dart';
 import 'features/authentication/logic/authentication_bloc/authentication_bloc.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   initGetItComponents();
   runApp(getIt<LoginDemo>());
 }
@@ -29,6 +30,8 @@ class LoginDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocProvider1<AuthenticationBloc>(
+        lazy: false,
+        reuseExisting: false,
         onBlocCreated: (authBloc) =>
             authBloc.add(const AuthenticationEvent.appStarted()),
         child: PlatformApp.router(
@@ -38,6 +41,7 @@ class LoginDemo extends StatelessWidget {
           routeInformationParser: _router.routeInformationParser,
           routerDelegate: _router.routerDelegate,
           title: appName,
+          localizationsDelegates: const [DefaultMaterialLocalizations.delegate],
         ),
       );
 }

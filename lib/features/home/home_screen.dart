@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:login_demo/core/ui/styles.dart';
+import 'package:login_demo/features/authentication/logic/authentication_bloc/authentication_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   static const path = "/";
@@ -16,13 +18,14 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text("Success"),
-                Image.asset("assets/images/success.jpg"),
+                Flexible(child: Image.asset("assets/images/success.jpg")),
                 PlatformTextButton(
-                  cupertino: (context, platform) => CupertinoTextButtonData(),
                   material: (context, platform) => MaterialTextButtonData(
                     style: Styles.getButtonStyle(context),
                   ),
-                  onPressed: () {},
+                  onPressed: () => context
+                      .read<AuthenticationBloc>()
+                      .add(const AuthenticationEvent.logoutRequested()),
                   child: const Text("Logout"),
                 )
               ],
