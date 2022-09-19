@@ -38,7 +38,7 @@ class _LoginState extends State<LoginScreen> {
                 const Flexible(
                   child: Padding(
                     padding: EdgeInsets.only(bottom: 40.0),
-                    child: Text(
+                    child: SelectableText(
                       "Registered credentials\nlogin: test@mail.com\npassword: 12345qwe",
                       textAlign: TextAlign.center,
                     ),
